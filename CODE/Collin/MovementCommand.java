@@ -1,3 +1,10 @@
+/**
+ * Manages the player's allowed movements
+ *
+ * @author (Collin Mason)
+ * @version (0.01)
+ */
+
 class MovementCommand extends Command {
 
     private String dir;

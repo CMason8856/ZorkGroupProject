@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  *
- * @author Mark
+ * @author Alfredo Soto
+ * Class creates a player and creates methods used by the player
  */
 public class Player {
     
