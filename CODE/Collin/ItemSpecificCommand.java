@@ -1,3 +1,8 @@
+/**
+ * @author (Collin Mason)
+ * @version (0.01)
+ */
+
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +16,10 @@ class ItemSpecificCommand extends Command {
     private String secondEvent;
     private String firstThreeLetters2;
 
+	/**
+	 * @param verb, name of the action taken
+	 * @param noun, name of the item acted upon
+	 */
     ItemSpecificCommand(String verb, String noun) {
         this.verb = verb;
         this.noun = noun;
@@ -19,6 +28,9 @@ class ItemSpecificCommand extends Command {
 
     }
 
+	/**
+	 * @return returns the result of the action taken on the object
+	 */
     public String execute() {
 
         Item itemReferredTo = null;
