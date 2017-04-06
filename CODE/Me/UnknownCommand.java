@@ -1,3 +1,11 @@
+
+
+/**
+ * @author Alfredo
+ * 
+ * class to handle unknown commands from user
+ */
+
 class UnknownCommand extends Command {
 
     private String bogusCommand;

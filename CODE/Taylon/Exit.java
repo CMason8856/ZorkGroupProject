@@ -1,3 +1,11 @@
+/**
+ * The Exit class represents the multiple ways to enter and exit a room in the 
+ * dungeon. Each exit connects to a designation room and starting room. Each 
+ * exit is approached by a direction determined by user input.
+ * 
+ * @author Taylon Thorpe
+ * @version(4/5/17)
+ */
 import java.util.Scanner;
 
 public class Exit {
