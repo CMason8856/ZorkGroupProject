@@ -1,3 +1,10 @@
+/**
+ * Interpreter to relay between the Dungeon and the Player
+ *
+ * @author(Collin Mason)
+ * @version(0.01)
+ */
+
 import java.util.Scanner;
 
 
@@ -9,6 +16,11 @@ public class Interpreter {
     public static String USAGE_MSG =
             "Usage: Interpreter borkFile.bork|saveFile.sav.";
 
+	/**
+	 * @param args, contains the name of the .bork|sav file to the read in
+	 * @var command, holds the value of the player inputed command
+	 * @var commandLine, Scanner object to pass commands into the dungeon
+	 */
     public static void main(String args[]) {
 
         if (args.length < 1) {
@@ -54,6 +66,10 @@ public class Interpreter {
         }
     }
 
+	/**
+	 * @param commandLine, contains the command value inputed by the player
+	 * @return commandLine.nextLine(), returns an empty commandLine object
+	 */
     private static String promptUser(Scanner commandLine) {
 
         System.out.print("> ");
