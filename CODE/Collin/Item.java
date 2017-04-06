@@ -112,11 +112,19 @@ public class Item {
         return primaryName;
     }
     
+	/**
+	 * @param verb, name of the verb to pull
+	 * @return events.get(verb), returns the selected verb from the ArrayList
+	 */
     public ArrayList<String> getEventsForVerb(String verb)
     {
         return events.get(verb);
     }
     
+	/**
+	 * @param verb, name of the verb to pull
+	 * @return events.get(verb), returns the selected verb from the ArrayList
+	 */
     public ArrayList<String> getEffect(String verb)
     {
         return events.get(verb);

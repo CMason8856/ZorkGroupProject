@@ -1,17 +1,21 @@
 /**
- *(Description)
+ * Determines what the console prints when the health command is called
  *
- * @author(Collin Mason)
- * @version(11/16/2016)
+ * @author (Collin Mason)
+ * @version (0.01)
  */
 
 class HealthCommand extends Command{
     private int health = GameState.instance().getHealth();
 
-    HealthCommand(){
-        
-    }
-
+	/**
+	 * Empty construct for HealthCommand
+	 */
+    HealthCommand(){}
+	
+	/**
+	 * @return returns the String statement determined by where the player's health falls within a certain range
+	 */
     public String execute(){
         if(health >= 90 && health <= 100){
             return "Your health is in magnificant shape.\n";
