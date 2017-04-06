@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+/**
+ *
+ * @author Alfredo Soto
+ * Class creates a Room and creates methods used by Room
+ */
 public class Room {
 
     class NoRoomException extends Exception {}
@@ -15,17 +19,28 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean light; //True means lit false means dark
-
+    /**
+     * Room Constructor
+     * @param title name of room
+     */
     Room(String title) {
         init();
         this.title = title;
     }
 
+    /**
+     *method to return list of exits
+     * @return arraylist of exits
+     */
     public ArrayList getExits()
     {
         return exits;
     }
-
+    /**
+     * Room Constructor
+     * @param s scanner object
+     * @param d Dungeon object,
+     */
     Room(Scanner s, Dungeon d) throws NoRoomException,
             Dungeon.IllegalDungeonFormatException {
 
@@ -94,26 +109,45 @@ public class Room {
         }
     }
 
-    // Common object initialization tasks.
+    /**
+     * Empties out contents and exits arrays, and changes beenHere to false
+     */ 
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
     }
 
+    /**
+     * returns title of room
+     * @return title 
+     */
     String getTitle() { return title; }
-
+     
+    /**
+     * returns if there is light in the room
+     * @return light 
+     */
     Boolean getLight() { return this.light;}
-
+    
+    /**
+     * changes light parameter
+     * 
+     */
     void setLight(Boolean light) {
         this.light = light;
     }
 
+    /**
+     * changes room description
+     * 
+     */
     void setDesc(String desc) { this.desc = desc; }
 
-    /*
+    /**
      * Store the current (changeable) state of this room to the writer
      * passed.
+     * @param w printwriter
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
@@ -127,7 +161,12 @@ public class Room {
         }
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
-
+    /**
+     * Restores state from .sav file
+     * @param s scanner
+     * @param d dungeon
+     * 
+     */
     void restoreState(Scanner s, Dungeon d) throws
             GameState.IllegalSaveFormatException {
 
@@ -153,6 +192,11 @@ public class Room {
         }
     }
 
+    /**
+     * prints description of room
+     * 
+     * @return description 
+     */
     public String describe() {
         String description;
         if (beenHere) {
@@ -173,6 +217,12 @@ public class Room {
         return description;
     }
 
+    /**
+     * method to check if direction has a valid exit
+     * @param dir direction
+     * @return an exit object
+     * 
+     */
     public Room leaveBy(String dir) {
         for (Exit exit : exits) {
             if (exit.getDir().equals(dir)) {
@@ -181,19 +231,37 @@ public class Room {
         }
         return null;
     }
-
+    /**
+     * adds an exit to the room
+     * @param exit exit to be added
+     */
     void addExit(Exit exit) {
         exits.add(exit);
     }
 
+    /**
+     * adds an item to the room
+     * @param item to be added
+     * 
+     */
     void add(Item item) {
         contents.add(item);
     }
 
+    /**
+     * removes an item in the room
+     * @param item item to be removed
+     */    
     void remove(Item item) {
         contents.remove(item);
     }
 
+    /**
+     * returns an item named 'name'
+     * @param name name of item
+     * @return item named name
+     * 
+     */
     Item getItemNamed(String name) throws Item.NoItemException {
         for (Item item : contents) {
             if (item.goesBy(name)) {
@@ -202,7 +270,11 @@ public class Room {
         }
         throw new Item.NoItemException();
     }
-
+    /**
+     * returns the Arraylist of items
+     * @return Arraylist<item>
+     * 
+     */
     ArrayList<Item> getContents() {
         return contents;
     }
