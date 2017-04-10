@@ -10,22 +10,24 @@ public class Interpreter {
             "Usage: Interpreter borkFile.bork|saveFile.sav.";
 
     public static void main(String args[]) {
-
+        System.out.println("Enter a file: ");
+        String file = new Scanner(System.in).nextLine();
+        /**
         if (args.length < 1) {
             System.err.println(USAGE_MSG);
             System.exit(1);
         }
-
+        */
         String command;
         Scanner commandLine = new Scanner(System.in);
 
         try {
             state = GameState.instance();
-            if (args[0].endsWith(".bork")) {
-                state.initialize(new Dungeon(args[0]));
+            if (file.endsWith(".bork")) {
+                state.initialize(new Dungeon(file));
                 System.out.println("\nWelcome to " +
                         state.getDungeon().getName() + "!");
-            } else if (args[0].endsWith(".sav")) {
+            } else if (file.endsWith(".sav")) {
                 state.restore(args[0]);
                 System.out.println("\nWelcome back to " +
                         state.getDungeon().getName() + "!");
