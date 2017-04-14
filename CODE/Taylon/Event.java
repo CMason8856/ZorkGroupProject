@@ -1,8 +1,10 @@
 
 /**
- * Created by Michael Timpson on 11/8/16.
- * @author Michael
- * @return
+ * The event class handles multiple events that may occur during the game and
+ * calls the Gamestate to change itself.
+ * 
+ * @author Taylon Thorpe
+ * @version(4/5/17)
  */
 class Event {
     
@@ -12,15 +14,15 @@ class Event {
 
     /**
      *
-     * @param num
-     * Construtor for event class
+     * @param num constructs an event class with an int.
+     * Constructor for event class
      */
     Event(int num) {
         this.num = num;
     }
 
     /**
-     *
+     * @param item constructs an event class with an item.
      * @param item
      * Constructor for event class
      */
@@ -29,8 +31,7 @@ class Event {
     }
 
     /**
-     *
-     * @param bol
+     *@param bol constructs an event class with an boolean.
      * Constructor for event class
      */
     Event(Boolean bol) {
@@ -38,9 +39,9 @@ class Event {
     }
 
     /**
-     *
+     *Score adds the passed in int and then returns the current score.
      * @param score
-     * @return
+     * @return the current score.
      *
      */
     static int score(int score) {
@@ -49,9 +50,9 @@ class Event {
     }
 
     /**
-     *
-     * @param health
-     * @return
+     * Wound subtracts health from the player by the passed in int amount.
+     * @param health represents the amount of health to take away.
+     * @return the current health
      */
     static int wound(int health) {
         GameState.instance().addHealth(health);
@@ -60,8 +61,9 @@ class Event {
 
     /**
      *
-     * @param death
-     * @return
+     *Die returns a death message and exits the System.
+     * @param death is the boolean to determine if the player died or not.
+     * @return death message
      */
     static String die(boolean death) {
          if(death==true)
@@ -75,14 +77,14 @@ class Event {
     }
 
     /**
-     *
-     * @param win
-     * @return
+     *Win returns a win message and exits the System.
+     * @param win is the boolean to determine if the player won or not.
+     * @return win message
      */
     static String win(boolean win) {
         if(win == true)
         {
-            System.out.println("Congratulations, you won!");
+            //System.out.println("Congratulations, you won!");
             System.exit(0);
             return "Congratulations, you won!";
         }
@@ -90,17 +92,18 @@ class Event {
     }
 
     /**
-     *
-     * @param item
+     * Disappear calls a method from the Gamestate to remove an item.
+     * @param item is the item that is to be removed
      */
     static void disappear(Item item) {
         GameState.removeFromInventory(item);
     }
 
     /**
-     *
-     * @param item
-     * @return
+     *Transform exchanges two items by calling the removeFromInventory method
+     * and addItemToInventory method from GameState
+     * @param  item is the item that will be removed from the inventory
+     * @param item2 
      */
     static void transform(Item item, Item item2) {
 
@@ -110,16 +113,17 @@ class Event {
     }
 
     /**
-     *
-     * @param exit
+     *Unlock calls the unlockExit method in GameState
+     * 
+     * @param exit gives the exit that is to be unlocked.
      */
     static void unlock(Exit exit) {
         GameState.unlockExit(exit);
     }
 
     /**
-     *
-     * @return
+     *The teleport method takes the adventurer into the starting room of the 
+     * dungeon.
      */
     static void teleport() {
         GameState.setAdventurersCurrentRoom(Dungeon.getEntry());
