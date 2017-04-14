@@ -1,3 +1,10 @@
+/**
+ * CommandFactory parses commands from user input so that the proper 
+ * Command class is used. 
+ * 
+ * @author Taylon Thorpe
+ * @version(4/5/17)
+ */
 import java.util.List;
 import java.util.Arrays;
 
