@@ -1,4 +1,9 @@
-
+/**
+ * DropCommand extends the Command class and drops the given item from the inventory
+ * 
+ * @author Taylon Thorpe
+ * @version(4/5/17)
+ */
 class DropCommand extends Command {
 
     private String itemName;
