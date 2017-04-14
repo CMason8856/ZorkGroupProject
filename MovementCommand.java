@@ -25,6 +25,10 @@ class MovementCommand extends Command {
     public String execute() {
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
+        
+        if(nextRoom==null){
+            return "You can't go " + dir + ".\n";
+        }
 
         Boolean exitLocked = GameState.instance().getExitInVicinity().getExitLocked();
 
@@ -37,6 +41,13 @@ class MovementCommand extends Command {
 
         else if (nextRoom != null && GameState.instance().getExitLockedInVicinity() == false && isLight == false) {
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
+            
+            try{
+                GameState.instance().getItemFromInventoryNamed("Flashlight");
+                nextRoom.setLight(true);
+                isLight=nextRoom.getLight();
+                return "\n"+nextRoom.describe()+"\n";
+            }catch(Exception ex){}
             return "\nThis room is currently dark, you can't see a thing!\n";
         }
 

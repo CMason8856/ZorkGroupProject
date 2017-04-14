@@ -22,7 +22,6 @@ public class Interpreter {
 	 * @var commandLine, Scanner object to pass commands into the dungeon
 	 */
     public static void main(String args[]) {
-
         if (args.length < 1) {
             System.err.println(USAGE_MSG);
             System.exit(1);
