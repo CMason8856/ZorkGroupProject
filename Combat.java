@@ -1,12 +1,13 @@
 /**
- * Contains Constructors and Methods for Objects of type Combat
+ * Contains Constructors and Methods for Objects of type Combat.
  *
- * @author(Collin Mason)
- * @version(11/9/2016)
+ * @author Taylon Thorpe
+ * @version(4/5/2017)
  */
 
 import java.util.Random;
 import java.util.Scanner;
+
 
 class Combat{
     GameState stateOfTheGame = GameState.instance();
@@ -26,7 +27,7 @@ class Combat{
 
     /**
      * @param enemy, identifies the NPC Object that will be hit
-     * @return, returns the deamage dealt to the enemy to the caller
+     * @return, returns the damage dealt to the enemy to the caller
      */
     int playerAttack(NPC enemy){
         int dam = randint.nextInt(64)+1;
