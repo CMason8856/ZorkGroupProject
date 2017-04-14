@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by Michael on 11/8/16.
- * @author Michael Timpson
+ * 
+ * @author Alfredo Soto
  * Class creates a Non-Player-Character and adds methods
- * to utilize the NPC
+ * that will be used by NPC
  */
 public class NPC {
 
@@ -24,7 +24,7 @@ static class NoNpcException extends Exception {}
      * @param enemy
      * @param health
      *
-     * Constructs the Non-Player-Character
+     * Overloaded NPC Constructors - initialized from .sav file or constructed with variables 
      */
     public NPC(Room room, String name, boolean enemy, int health) {
         location = room;
@@ -100,7 +100,7 @@ static class NoNpcException extends Exception {}
     /**
      *
      * @param health
-     * Set's the health of the enemy.
+     * Sets the health of the enemy.
      */
     public void setHealth(int health) {
         this.health = health;
