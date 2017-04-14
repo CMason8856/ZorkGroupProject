@@ -1,4 +1,10 @@
-
+/**
+ * The Dungeon class handles everything to do with the overarching dungeon like
+ * placing the rooms and exits. 
+ * 
+ * @author Taylon Thorpe
+ * @version(4/5/17)
+ */
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.IOException;
@@ -45,6 +51,8 @@ public class Dungeon {
     /**
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it.
+     * @param filename is the file's name which is passed in and used for the 
+     * Dungeon.
      */
     public Dungeon(String filename) throws FileNotFoundException,
             IllegalDungeonFormatException {
@@ -55,6 +63,10 @@ public class Dungeon {
     /**
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
+     * @param filename is the file's name which is passed in and used for the 
+     * Dungeon.
+     * @param initState tells if the Dungeon should be set to it's initial state 
+     * or not.
      */
     public Dungeon(String filename, boolean initState)
             throws FileNotFoundException, IllegalDungeonFormatException {
@@ -135,9 +147,10 @@ public class Dungeon {
         items = new Hashtable<String,Item>();
     }
 
-    /*
+    /**
      * Store the current (changeable) state of this dungeon to the writer
      * passed.
+     * @param w identifies what PrintWriter object is being used.
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(FILENAME_LEADER + getFilename());
@@ -148,9 +161,11 @@ public class Dungeon {
         w.println(TOP_LEVEL_DELIM);
     }
 
-    /*
+    /**
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
+     * @param s gives the Scanner object that will be used to restore the state
+     * of the dungeon.
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
@@ -184,6 +199,8 @@ public class Dungeon {
      * Get the Item object whose primary name is passed. This has nothing to
      * do with where the Adventurer might be, or what's in his/her inventory,
      * etc.
+     * @param primaryItemName is the item name of the item that is returned.
+     * @return returns the item with the same passed in name.
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {
 
