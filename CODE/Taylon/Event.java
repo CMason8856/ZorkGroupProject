@@ -6,6 +6,8 @@
  * @author Taylon Thorpe
  * @version(4/5/17)
  */
+import java.util.Arrays;
+
 class Event {
     
     int num;
@@ -126,9 +128,14 @@ class Event {
      * dungeon.
      */
     static void teleport() {
-        GameState.setAdventurersCurrentRoom(Dungeon.getEntry());
-        System.out.println("You have been teleported back to the start of the Dungeon!");
-        return;
+        Object[] r = GameState.instance().getDungeon().getRooms().values().toArray();
+        int i = (int)(1+ Math.random()*6);
+        System.out.println(""+ r.length);
+        System.out.println(""+ i);
+        GameState.setAdventurersCurrentRoom((Room)r[i]);
+        System.out.println("You have been teleported " + 
+                GameState.instance().getAdventurersCurrentRoom().getTitle() +"!");
+        //return;
     }
 
 }
