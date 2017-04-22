@@ -194,6 +194,11 @@ public class Dungeon {
     public static Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
+    
+    public Hashtable getRooms(){
+        return rooms;
+    }
+    
 
     /**
      * Get the Item object whose primary name is passed. This has nothing to
