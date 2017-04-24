@@ -7,6 +7,10 @@ Key
 examine:The key is made of gold, it shimmers in the light.
 use[Unlock,Disappear]:The key makes a satisying click, and the door becomes unlocked.
 ---
+Flashlight
+5
+examine:This is like the sun
+---
 Bomb
 95
 examine:The bomb is a heavy, glistening black sphere. On the top appears to be some form of detonator.
@@ -56,7 +60,7 @@ stomp:The donut is now smooshed.
 Rooms:
 Rotunda
 light
-Contents: Key
+Contents: Key,Flashlight
 You are in a beautiful round entry chamber, with tall white pillars that
 seemingly reach to the skies. There is an elevator here.
 ---
