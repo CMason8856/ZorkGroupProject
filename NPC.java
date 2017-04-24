@@ -36,19 +36,19 @@ static class NoNpcException extends Exception {}
     public NPC(Scanner s) throws NoNpcException{
 
         this.name = s.nextLine();
-        System.out.println(name);
+        //System.out.println(name);
         if(name.indexOf("===")>=0){
             throw new NoNpcException();
         }
             
         String r = s.nextLine();
-            System.out.println(r);
+            //System.out.println(r);
         this.location = GameState.instance().getDungeon().getRoom(r);
             //System.out.println(location);
         this.health = Integer.parseInt(s.nextLine());
-            System.out.println(health);
+            //System.out.println(health);
         String e = s.nextLine();
-            System.out.println(e);
+            //System.out.println(e);
         this.enemy = true;
             //System.out.println(enemy);
     }

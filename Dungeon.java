@@ -60,7 +60,6 @@ public class Dungeon {
             IllegalDungeonFormatException {
 
         this(filename, true);
-        System.out.println("Done making dungeon");
     }
 
     /**
@@ -93,7 +92,7 @@ public class Dungeon {
             throw new IllegalDungeonFormatException("No '" +
                     ITEMS_MARKER + "' line where expected.");
         }
-
+        System.out.println("...Initiating Items...");
         try {
             // Instantiate items.
             while (true) {
@@ -106,39 +105,38 @@ public class Dungeon {
             throw new IllegalDungeonFormatException("No '" +
                     ROOMS_MARKER + "' line where expected.");
         }
-
+        System.out.println("...Initiating First Room...");
         try {
             // Instantiate and add first room (the entry).
             entry = new Room(s, this, initState, true);
             add(entry);
 
-
+        System.out.println("...Initiating Rooms...");
             // Instantiate and add other rooms.
             while (true) {
                 add(new Room(s, this, initState, true));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
-        System.out.println("start of exits exception...");
         // Throw away Exits starter.
         if (!s.nextLine().equals(EXITS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                     EXITS_MARKER + "' line where expected.");
         }
-        System.out.println("start of exits...");
+        System.out.println("...Initiating Exits...");
         try {
             // Instantiate exits.
             while (true) {
                 Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
-        System.out.println("End of Exits... Start exception");
+        
         if(!s.nextLine().equals(NPC_MARKER)) {
             throw new IllegalDungeonFormatException("No " + NPC_MARKER + " line where expected.");
         }
-        System.out.println("Doing NPC init...");
+        System.out.println("...Initiating NPC's...");
        
         
-        System.out.println("S is: ");
+        //System.out.println("S is: ");
         boolean loopTrue=true;
             //while(!s.nextLine().equals(SECOND_LEVEL_DELIM)){
             while(loopTrue){
@@ -147,8 +145,8 @@ public class Dungeon {
                 s.nextLine();//throws away Delimiter '---' inbetween NPC's
                 }catch(NPC.NoNpcException e){loopTrue=false;}
             }
-        System.out.println("Done NPC init...");
-        System.out.println(people.get(0).getLocation().getTitle());
+        System.out.println("...Dungeon Initialization Complete...");
+        //System.out.println(people.get(0).getLocation().getTitle());
         s.close();
     }
 

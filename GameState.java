@@ -223,6 +223,10 @@ public class GameState {
         }
         return false;
     }
+    
+    Boolean getExitLockedInDirection(Room src,String dir){
+        if(src.ge){}
+    }
 
 	/**
 	 * @return true, is returned if there is light in the room

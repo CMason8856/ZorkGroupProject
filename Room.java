@@ -35,7 +35,7 @@ public class Room {
      *method to return list of exits
      * @return arraylist of exits
      */
-    public ArrayList getExits()
+    public ArrayList<Exit> getExits()
     {
         return exits;
     }
@@ -293,6 +293,11 @@ public class Room {
             
         }
     }
+     
+     Boolean hasEnemy(){
+         if (enemy != null){return true; }
+         return false;
+     }
     Room battle(){
         Room outcome=this;
         checkEnemy();
@@ -328,6 +333,7 @@ public class Room {
                     //CommandFactory.instance().parse(exits.get(0).getDir()).execute();
                     //battleTrue=false;
                     System.out.println(exits.get(0).getDest().getTitle());
+                    game.getAdventurersCurrentRoom().setLight(false);
                     return exits.get(0).getDest();
                 }
                 else{

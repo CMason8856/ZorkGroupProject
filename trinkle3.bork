@@ -99,12 +99,12 @@ Exits:
 Rotunda
 u
 Rotunda balcony
-unlocked
+locked
 ---
 Rotunda balcony
 d
 Rotunda
-locked
+unlocked
 ---
 Rotunda
 d
@@ -138,6 +138,11 @@ unlocked
 ---
 Stephen's office
 e
+Basement hallway
+unlocked
+---
+Room B13
+s
 Basement hallway
 unlocked
 ---

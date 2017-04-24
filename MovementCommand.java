@@ -28,6 +28,9 @@ class MovementCommand extends Command {
         Room nextRoom = currentRoom.leaveBy(dir);
         
         if(nextRoom==null){
+            for(Exit e:currentRoom.getExits()){
+            e.describe();
+            }
             return "You can't go " + dir + ".\n";
         }
 
