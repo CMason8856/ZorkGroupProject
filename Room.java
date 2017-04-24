@@ -313,7 +313,9 @@ public class Room {
                 String move = choice.nextLine();
                 if(move.equals("attack") || move.equals("1")){
                     thisRoom.playerAttack(enemy);
-                    thisRoom.enemyAttack(player);
+                    if (!thisRoom.isDead(player)){
+                        thisRoom.enemyAttack(player);
+                    }
                 }
                 /*
                 else if(move.equals("inventory")||move.equals("2")){
@@ -335,6 +337,10 @@ public class Room {
                     System.out.println(exits.get(0).getDest().getTitle());
                     game.getAdventurersCurrentRoom().setLight(false);
                     return exits.get(0).getDest();
+                }
+                else if (move.equals("q")){
+                    System.out.println("Bye");
+                    System.exit(0);
                 }
                 else{
                     System.out.println(move+" is not a valid choice.");

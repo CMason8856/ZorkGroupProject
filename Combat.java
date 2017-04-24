@@ -55,6 +55,13 @@ class Combat{
                 "\n(Your Health):"+pc.getHealth());
         return playerHealth;
     }
+    
+    Boolean isDead(Player pc){
+        if (pc.getHealth() <= 0){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @param invitem, identifies the Item Object that the player is using in Combat

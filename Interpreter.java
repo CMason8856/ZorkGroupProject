@@ -57,6 +57,7 @@ public class Interpreter {
 
                 command = promptUser(commandLine);
             }
+            
 
             System.out.println("Bye!");
 
