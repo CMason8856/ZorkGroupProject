@@ -71,7 +71,7 @@ public class Interpreter {
 	 */
     private static String promptUser(Scanner commandLine) {
 
-        System.out.print("(Player) >>> ");
+        System.out.print(">>> ");
         return commandLine.nextLine();
     }
 

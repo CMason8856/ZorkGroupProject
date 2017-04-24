@@ -68,7 +68,7 @@ class Event {
     static String die(boolean death) {
          if(death==true)
          {
-             System.out.println("You have died...");
+             System.out.println("You have died...\n" + "Your final score: " + GameState.instance().getScore());
              System.exit(0);
              return "You have died...";
 
@@ -84,7 +84,7 @@ class Event {
     static String win(boolean win) {
         if(win == true)
         {
-            //System.out.println("Congratulations, you won!");
+            System.out.println("Congratulations, you won!\n" + "Your final score: " + GameState.instance().getScore());
             System.exit(0);
             return "Congratulations, you won!";
         }

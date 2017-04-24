@@ -63,7 +63,7 @@ class Combat{
     ItemSpecificCommand playerUseItem(Item invitem){
         stateOfTheGame.instance().getInventoryNames();
         Scanner input = new Scanner(System.in);
-        System.out.println("Whhich item would you like to use and what would you like to do with it? ex: 'detonate bomb'");
+        System.out.println("Which item would you like to use and what would you like to do with it? ex: 'detonate bomb'");
         String userItem = input.nextLine();
         String[] parseInput = userItem.split(" ");
         return new ItemSpecificCommand(parseInput[0], parseInput[1]);

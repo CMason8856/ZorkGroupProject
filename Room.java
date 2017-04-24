@@ -337,7 +337,7 @@ public class Room {
                     return exits.get(0).getDest();
                 }
                 else{
-                    System.out.println(choice+" is not a valid choice.");
+                    System.out.println(move+" is not a valid choice.");
                 }
                 if(player.getHealth() <= 0){//player dies
                     //battleTrue = false;
