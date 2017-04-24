@@ -19,6 +19,9 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean light; //True means lit false means dark
+    private boolean hasEnemy;
+    private NPC enemy;
+    GameState game=GameState.instance();
     /**
      * Room Constructor
      * @param title name of room
@@ -116,6 +119,8 @@ public class Room {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
+        hasEnemy = false;
+        enemy = null;
     }
 
     /**
@@ -277,5 +282,55 @@ public class Room {
      */
     ArrayList<Item> getContents() {
         return contents;
+    }
+    void checkEnemy(){
+        for(NPC e:game.getDungeon().getPeople()){
+            if(e.getLocation()==this){
+                hasEnemy=e.getEnemy();
+            }
+
+        }
+    }
+    void battle(){
+        checkEnemy();
+        if(hasEnemy){
+            boolean battleTrue = true;
+            Player player=Player.instance();
+            Combat thisRoom=new Combat(player,enemy);
+            Scanner choice = new Scanner(System.in);
+            System.out.println("OH NO! there is an enemy! It's "+enemy.getName()+"\nWhat should I do???");
+            while(battleTrue){
+                System.out.println("1) attack\n2) inventory\n3) flee\n");
+                System.out.print("You... ");
+                String move = choice.nextLine();
+                if(move.equals("attack") || move.equals("1")){
+                    thisRoom.playerAttack(enemy);
+                    thisRoom.enemyTurn();
+                }
+                /*
+                else if(move.equals("inventory")||move.equals("2")){
+                    for(Item item:game.getInventoryNames()){
+                        System.out.println(item);
+                    }
+                    System.out.println("What should we use?");
+                    String useItem = choice.nextLine();
+                    if(){}
+                }
+                */
+                else if(move.equals("flee")||move.equals("3")){
+                    battleTrue=false;
+
+                    game.setAdventurersCurrentRoom(exits.get(0).getDest());
+                    
+                }
+                else{
+                    System.out.println(choice+" is not a valid choice.");
+                }
+                if(player.getHealth() <= 0 || enemy.getHealth() <= 0){
+                    battleTrue = false;
+                }
+
+            }
+        }
     }
 }

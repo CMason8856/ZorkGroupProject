@@ -105,5 +105,7 @@ static class NoNpcException extends Exception {}
     public void setHealth(int health) {
         this.health = health;
     }
-
+    public Room getLocation(){
+        return location;
+    }
 }

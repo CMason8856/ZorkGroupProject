@@ -1,5 +1,3 @@
-
-
 /**
  *
  * @author Alfredo Soto
@@ -8,18 +6,26 @@
 public class Player {
     
     
-    private String name;
-    private int health;
+    private static String name;
+    private static int health;
     private Item currentItemEquipped;
+    public static Player theInstance;
+
     /**
      * Creates a Player object that mirrors the adventurer in order to participate in combat
      * @param name name of this Player
      * @param health maximum health of this Player
      */
-    Player(String name, int health)
+    public Player(String name, int health)
     {
         this.name = name;
         this.health = health;
+    }
+    static synchronized Player instance() {
+        if (theInstance == null) {
+            theInstance = new Player(name,health);
+        }
+        return theInstance;
     }
     
     /**
