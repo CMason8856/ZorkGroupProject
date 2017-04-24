@@ -129,9 +129,7 @@ class Event {
      */
     static void teleport() {
         Object[] r = GameState.instance().getDungeon().getRooms().values().toArray();
-        int i = (int)(1+ Math.random()*6);
-        System.out.println(""+ r.length);
-        System.out.println(""+ i);
+        int i = (int)(1+ Math.random()*6)-1;
         GameState.setAdventurersCurrentRoom((Room)r[i]);
         System.out.println("You have been teleported " + 
                 GameState.instance().getAdventurersCurrentRoom().getTitle() +"!");
