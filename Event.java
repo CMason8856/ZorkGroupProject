@@ -126,9 +126,12 @@ class Event {
      * dungeon.
      */
     static void teleport() {
-        GameState.setAdventurersCurrentRoom(Dungeon.getEntry());
-        System.out.println("You have been teleported back to the start of the Dungeon!");
-        return;
+        Object[] r = GameState.instance().getDungeon().getRooms().values().toArray();
+        int i = (int)(1+ Math.random()*6)-1;
+        GameState.setAdventurersCurrentRoom((Room)r[i]);
+        System.out.println("You have been teleported " + 
+                GameState.instance().getAdventurersCurrentRoom().getTitle() +"!");
+        //return;
     }
 
 }

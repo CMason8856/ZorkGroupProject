@@ -8,6 +8,7 @@
 class MovementCommand extends Command {
 
     private String dir;
+    private GameState game=GameState.instance();
 
     /**
      * This command is created when the user input is a direction the users to desires to move.
@@ -46,6 +47,8 @@ class MovementCommand extends Command {
                 GameState.instance().getItemFromInventoryNamed("Flashlight");
                 nextRoom.setLight(true);
                 isLight=nextRoom.getLight();
+                game.setAdventurersCurrentRoom(game.getAdventurersCurrentRoom().battle());
+                nextRoom=game.getAdventurersCurrentRoom();
                 return "\n"+nextRoom.describe()+"\n";
             }catch(Exception ex){}
             return "\nThis room is currently dark, you can't see a thing!\n";

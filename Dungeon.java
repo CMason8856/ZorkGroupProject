@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 //Dungeon
 public class Dungeon {
 
@@ -39,6 +40,7 @@ public class Dungeon {
     private static Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items;
     private String filename;
+    private ArrayList<NPC> people;
 
     Dungeon(String name, Room entry) {
         init();
@@ -58,6 +60,7 @@ public class Dungeon {
             IllegalDungeonFormatException {
 
         this(filename, true);
+        System.out.println("Done making dungeon");
     }
 
     /**
@@ -70,7 +73,7 @@ public class Dungeon {
      */
     public Dungeon(String filename, boolean initState)
             throws FileNotFoundException, IllegalDungeonFormatException {
-
+        System.out.println("");
         init();
         this.filename = filename;
 
@@ -115,28 +118,37 @@ public class Dungeon {
                 add(new Room(s, this, initState, true));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
-
+        System.out.println("start of exits exception...");
         // Throw away Exits starter.
         if (!s.nextLine().equals(EXITS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                     EXITS_MARKER + "' line where expected.");
         }
-
+        System.out.println("start of exits...");
         try {
             // Instantiate exits.
             while (true) {
                 Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
-
+        System.out.println("End of Exits... Start exception");
         if(!s.nextLine().equals(NPC_MARKER)) {
             throw new IllegalDungeonFormatException("No " + NPC_MARKER + " line where expected.");
         }
-
-
-
-
-
+        System.out.println("Doing NPC init...");
+       
+        
+        System.out.println("S is: ");
+        boolean loopTrue=true;
+            //while(!s.nextLine().equals(SECOND_LEVEL_DELIM)){
+            while(loopTrue){
+                try{
+		people.add(new NPC(s));
+                s.nextLine();//throws away Delimiter '---' inbetween NPC's
+                }catch(NPC.NoNpcException e){loopTrue=false;}
+            }
+        System.out.println("Done NPC init...");
+        System.out.println(people.get(0).getLocation().getTitle());
         s.close();
     }
 
@@ -145,6 +157,7 @@ public class Dungeon {
     private void init() {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
+        people = new ArrayList<NPC>();
     }
 
     /**
@@ -208,5 +221,11 @@ public class Dungeon {
             throw new Item.NoItemException();
         }
         return items.get(primaryItemName);
+    }
+	public Hashtable getRooms(){
+        return rooms;
+    }
+        public ArrayList<NPC> getPeople(){
+        return people;
     }
 }

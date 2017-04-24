@@ -8,9 +8,10 @@
 public class Player {
     
     
-    private String name;
-    private int health;
+    private static String name;
+    private static int health;
     private Item currentItemEquipped;
+    public static Player theInstance;
     /**
      * Creates a Player object that mirrors the adventurer in order to participate in combat
      * @param name name of this Player
@@ -21,7 +22,12 @@ public class Player {
         this.name = name;
         this.health = health;
     }
-    
+    static synchronized Player instance() {
+        if (theInstance == null) {
+            theInstance = new Player("Collin",100);
+        }
+        return theInstance;
+    }
     /**
      * Returns player's current health
      * @return health field

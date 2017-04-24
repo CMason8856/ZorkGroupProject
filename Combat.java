@@ -14,6 +14,7 @@ class Combat{
     private static Random randint = new Random();
     private Player pc;
     private NPC enemy;
+    private GameState game=GameState.instance();
     //private ArrayList<Item> inventory = stateOfTheGame.inventory;
     /**
      * Construct Combat Objects
@@ -32,6 +33,13 @@ class Combat{
     int playerAttack(NPC enemy){
         int dam = randint.nextInt(64)+1;
         int enemyHealth = enemy.getHealth() -  dam;
+        for(NPC e:game.getDungeon().getPeople()){
+            if(e.getName().equals(enemy.getName())){
+                e.setHealth(enemyHealth);
+            }
+        }
+        System.out.println("You lashed at "+enemy.getName() +"... You did "+ dam + 
+                " Damage to it.\n("+enemy.getName()+" Health):"+enemy.getHealth());
         return enemyHealth;
     }
 
@@ -39,9 +47,12 @@ class Combat{
      * @param pc, identifies the Player Object that will be hit
      * @return, returns the damage dealt to the player to the caller
      */
-    private static int enemyAttack(Player pc){
+    /*private static */ int enemyAttack(Player pc){
         int dam = randint.nextInt(64)+1;
         int playerHealth = pc.getHealth() - dam;
+        pc.setHealth(playerHealth);
+        System.out.println("The Enemy attacked you for " + dam +
+                "\n(Your Health):"+pc.getHealth());
         return playerHealth;
     }
 
@@ -61,5 +72,5 @@ class Combat{
     /**
      * @return, returns a String representation of the NPC Object's turn to the caller
      */
-    String enemyTurn(){return "The Enemy attacked you for " + String.valueOf(enemyAttack(pc)) + ".";}
+    //String enemyTurn(){return "The Enemy attacked you for " + String.valueOf(enemyAttack(pc)) + ".";}
 }

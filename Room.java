@@ -19,6 +19,9 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean light; //True means lit false means dark
+    private boolean hasEnemy;
+    private NPC enemy;
+    GameState game=GameState.instance();
     /**
      * Room Constructor
      * @param title name of room
@@ -69,7 +72,7 @@ public class Room {
         }
 
         String roomLight = s.nextLine();
-        System.out.println(roomLight);
+        //System.out.println(roomLight);
 
         if (roomLight.equals("light")) {
             this.light = true;
@@ -116,6 +119,8 @@ public class Room {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
+        hasEnemy = false;
+        enemy = null;
     }
 
     /**
@@ -208,11 +213,11 @@ public class Room {
             description += "\nThere is a " + item.getPrimaryName() + " here.";
         }
         if (contents.size() > 0) { description += "\n"; }
-        if (!beenHere) {
+        //if (!beenHere) {
             for (Exit exit : exits) {
                 description += "\n" + exit.describe();
             }
-        }
+        //}
         beenHere = true;
         return description;
     }
@@ -277,5 +282,69 @@ public class Room {
      */
     ArrayList<Item> getContents() {
         return contents;
+    }
+     void checkEnemy(){
+        for(NPC e:game.getDungeon().getPeople()){
+            if(e.getLocation()==this){
+                hasEnemy=e.getEnemy();
+                enemy=e;
+                System.out.println("There is an enemy here");
+            }
+            
+        }
+    }
+    Room battle(){
+        Room outcome=this;
+        checkEnemy();
+        if(hasEnemy){
+            //boolean battleTrue = true;
+            Player player=Player.instance();
+            Combat thisRoom=new Combat(player,enemy);
+            Scanner choice = new Scanner(System.in);
+            System.out.println("\n\nOH NO! there is an enemy! It's "+enemy.getName()+"\nWhat should I do???");
+            while(true){
+                System.out.println("1) attack\n2) flee\n");
+                System.out.print("You... ");
+                String move = choice.nextLine();
+                if(move.equals("attack") || move.equals("1")){
+                    thisRoom.playerAttack(enemy);
+                    thisRoom.enemyAttack(player);
+                }
+                /*
+                else if(move.equals("inventory")||move.equals("2")){
+                    for(Item item:game.getInventoryNames()){
+                        System.out.println(item);
+                    }
+                    System.out.println("What should we use?");
+                    String useItem = choice.nextLine();
+                    if(){} Happy Happy Joy Joy
+                }
+                */
+                else if(move.equals("flee")||move.equals("2")){
+                    
+
+                    //game.setAdventurersCurrentRoom(exits.get(0).getDest());
+                    System.out.println("You fled");
+                    //CommandFactory.instance().parse(exits.get(0).getDir()).execute();
+                    //battleTrue=false;
+                    System.out.println(exits.get(0).getDest().getTitle());
+                    return exits.get(0).getDest();
+                }
+                else{
+                    System.out.println(choice+" is not a valid choice.");
+                }
+                if(player.getHealth() <= 0){//player dies
+                    //battleTrue = false;
+                    return exits.get(0).getDest();
+                }
+                if(enemy.getHealth() <= 0){//enemy dies
+                    //battleTrue = false;
+                    System.out.println("\nYou've Slain "+enemy.getName()+"! Now you may roam the room.");
+                    return this;
+                }
+            }
+            //battleTrue=true;
+        }
+        return outcome;
     }
 }

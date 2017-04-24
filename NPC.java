@@ -33,14 +33,24 @@ static class NoNpcException extends Exception {}
         this.health = health;
     }
 
-    public NPC(Scanner s) {
+    public NPC(Scanner s) throws NoNpcException{
 
         this.name = s.nextLine();
+        System.out.println(name);
+        if(name.indexOf("===")>=0){
+            throw new NoNpcException();
+        }
+            
         String r = s.nextLine();
+            System.out.println(r);
         this.location = GameState.instance().getDungeon().getRoom(r);
+            //System.out.println(location);
         this.health = Integer.parseInt(s.nextLine());
+            System.out.println(health);
         String e = s.nextLine();
+            System.out.println(e);
         this.enemy = true;
+            //System.out.println(enemy);
     }
 
     /**
@@ -105,5 +115,7 @@ static class NoNpcException extends Exception {}
     public void setHealth(int health) {
         this.health = health;
     }
-
+    public Room getLocation(){
+        return location;
+    }
 }

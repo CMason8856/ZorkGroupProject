@@ -139,7 +139,7 @@ class ItemSpecificCommand extends Command {
                             System.out.println("Looks like you won! Congrats!");
                             break;
                         }
-                        brawl.enemyTurn();
+                        brawl.enemyAttack(pc);
                         if(pc.getHealth() <= 0)
                         {
                             System.out.println("You have lost the battle and died...");
