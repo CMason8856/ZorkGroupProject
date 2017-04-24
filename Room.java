@@ -341,7 +341,7 @@ public class Room {
                 }
                 if(player.getHealth() <= 0){//player dies
                     //battleTrue = false;
-                    return exits.get(0).getDest();
+                    Event.die(true);
                 }
                 if(enemy.getHealth() <= 0){//enemy dies
                     //battleTrue = false;

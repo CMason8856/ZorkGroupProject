@@ -34,16 +34,16 @@ class MovementCommand extends Command {
             return "You can't go " + dir + ".\n";
         }
 
-        Boolean exitLocked = GameState.instance().getExitInVicinity().getExitLocked();
-
+        //Boolean exitLocked = GameState.instance().getExitInVicinity().getExitLocked();
+        Boolean exitLocked = GameState.instance().getExitLockedInDirection(currentRoom, dir);
         Boolean isLight = nextRoom.getLight();
 
-        if (nextRoom != null && GameState.instance().getExitLockedInVicinity() == false && isLight == true) {  // could try/catch here.
+        if (nextRoom != null && GameState.instance().getExitLockedInDirection(currentRoom,dir) == false && isLight == true) {  // could try/catch here.
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
             return "\n" + nextRoom.describe() + "\n";
         }
 
-        else if (nextRoom != null && GameState.instance().getExitLockedInVicinity() == false && isLight == false) {
+        else if (nextRoom != null && GameState.instance().getExitLockedInDirection(currentRoom,dir) == false && isLight == false) {
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
             
             try{
@@ -61,6 +61,7 @@ class MovementCommand extends Command {
             return "This exit is locked!" + "\n";
         }
         else {
+            System.out.println(""+ exitLocked);
             return "You can't go " + dir + ".\n";
         }
     }

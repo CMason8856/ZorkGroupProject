@@ -225,7 +225,14 @@ public class GameState {
     }
     
     Boolean getExitLockedInDirection(Room src,String dir){
-        if(src.ge){}
+        for (Exit e: src.getExits()){
+            if (e.getDir().equals(dir)){
+                if (e.getExitLocked()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 	/**
