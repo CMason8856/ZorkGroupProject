@@ -19,28 +19,33 @@ detonate[Die]:An ear-splitting halo of shrapnel kills you and seriously degrades
 ---
 DrPepper
 10
+examine:It's a thrist quenching can of Dr.Pepper.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 drink[Transform(emptyCan),Wound(-1)]:Gulp, gulp -- that was GOOD!
 ---
 emptyCan
 2
+examine:Now the once great soda can is reduced to a shell of it's former self.
 kick:The empty can skitters down the hallway.
 drink:Sorry, all gone!
 stomp[Transform(squishedCan)]:The can crunches down into a thin disk, useful for recycling.
 ---
 squishedCan
 2
+examine:You can almost pity the poor beat-up disc.
 throw:Zing!
 stomp:Further stomping seems to have no effect. recycle[Score(5),Disappear]:Boo-ya, helped save the environment.
 ---
 magicWand
 5
+examine:A wooden wand with sinous designs that look like vines covering it.
 break[Wound(10),Disappear]:The wand snaps in half. Strange magic fills the air, making you feel suddenly ill.
 wave[Score(5),Teleport]:An angelic form briefly appears, smiles, and just as quickly fades away.
 ---
 StarWarsToy
 5
+examine:A dopey looking plastic Yoda
 touch[Score(1)]:Yoda says, "Do, or do not! There is no try."
 break:Luckily, it's made of rugged plastic.
 ---
@@ -49,10 +54,12 @@ chainsaw
 ---
 WawaTravelMug
 10
+examine:You behold the stupendous WawaTravelMug in all of its glory.
 refill[Win]:You refill the mug with everlasting light roast coffee, and live happily ever after! :)
 ---
 donut
 7
+examine:A very tempting piece of flour, sugar, and a hole.
 eat[Disappear,Wound(-2)]:You feel mildly guilt-ridden.
 stomp:The donut is now smooshed.
 ---
