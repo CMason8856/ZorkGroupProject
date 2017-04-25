@@ -1,0 +1,20 @@
+﻿Bork Group Version 3B
+List of Supplemental features:
+
+Light: Some rooms are completely dark to the adventurer.  This is based off of how you set the Rooms in the bork file.  
+You have the option for every room to select a light room or a dark room.  In these rooms you will not be able to see anything that exists.  
+
+
+Locked Exit: Exits throughout the dungeon now may be locked.  You can set these exits to lock by commenting ‘lock’ or ‘unlock’ in the bork file.  
+In order to gain access to these rooms you need to find the key!  When you stumble upon the key you ‘Use’ 
+the key to grant yourself access through the exit, this will unlock the exit.
+
+Combat: If the player encounters an enemy NPC, they will have a duel. Like in Pokemon, 
+combat mode is a bit different from regular exploring mode. The player takes turns attacking and using items against the enemy NPC. 
+If the player wins, they continue on with the game. If they lose and die, the game is over.
+
+NPC: Non-player characters are computer-controlled characters that the player interacts with. So far, only enemies have been created. 
+
+HelpCommand: An additional help command to detail all possible commands, say 'help' to activate it.
+
+Player: A seperate singleton class that handles fighting methods, and updates the appropriate objects.

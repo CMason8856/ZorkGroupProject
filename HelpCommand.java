@@ -21,7 +21,7 @@ public class HelpCommand extends Command{
             "\n score"+
             "\n examine (item name)"+
             "\n use (Key)"+
-            "\n dentonate (Bomb)"+
+            "\n detonate (Bomb)"+
             "\n kick (Bomb,DrPepper, or emptyCan)"+
             "\n shake (DrPepper)"+
             "\n drink (DrPepper or emptyCan)"+

@@ -313,7 +313,7 @@ public class Room {
                 String move = choice.nextLine();
                 if(move.equals("attack") || move.equals("1")){
                     thisRoom.playerAttack(enemy);
-                    if (!thisRoom.isDead(player)){
+                    if (!thisRoom.isDead(enemy)){
                         thisRoom.enemyAttack(player);
                     }
                 }
@@ -351,6 +351,7 @@ public class Room {
                 }
                 if(enemy.getHealth() <= 0){//enemy dies
                     //battleTrue = false;
+                    Event.score(5);
                     System.out.println("\nYou've Slain "+enemy.getName()+"! Now you may roam the room.");
                     return this;
                 }

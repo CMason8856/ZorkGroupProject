@@ -48,6 +48,7 @@ class Event {
         GameState.instance().addScore(score);
         return GameState.getScore();
     }
+    
 
     /**
      * Wound subtracts health from the player by the passed in int amount.

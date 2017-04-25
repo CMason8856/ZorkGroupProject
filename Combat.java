@@ -56,8 +56,8 @@ class Combat{
         return playerHealth;
     }
     
-    Boolean isDead(Player pc){
-        if (pc.getHealth() <= 0){
+    Boolean isDead(NPC npc){
+        if (npc.getHealth() <= 0){
             return true;
         }
         return false;
