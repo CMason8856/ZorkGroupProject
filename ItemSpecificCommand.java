@@ -38,7 +38,7 @@ class ItemSpecificCommand extends Command {
         try {
             itemReferredTo = GameState.instance().getItemInVicinityNamed(noun);
         } catch (Item.NoItemException e) {
-            return "There's no " + noun + " here.";
+            return "There's no " + noun + " here.\n";
         }
         exitReferredTo = GameState.instance().getExitInVicinity();
         if (exitReferredTo == null) {
