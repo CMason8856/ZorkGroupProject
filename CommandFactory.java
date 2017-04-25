@@ -54,6 +54,9 @@ public class CommandFactory {
         if (verb.equals("i") || verb.equals("inventory")) {
             return new InventoryCommand();
         }
+        if (verb.equals("help")) {
+            return new HelpCommand();
+        }
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }

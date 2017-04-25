@@ -170,6 +170,10 @@ public class Dungeon {
             room.storeState(w);
         }
         w.println(TOP_LEVEL_DELIM);
+        for(NPC npc:people){
+        npc.storeState(w);
+        }
+        w.println(TOP_LEVEL_DELIM);
     }
 
     /**
@@ -193,6 +197,17 @@ public class Dungeon {
                     restoreState(s, this);
             roomName = s.nextLine();
         }
+        String NpcName=s.nextLine();//Throwing Away 'NPC:'
+        NpcName=s.nextLine();//NPC: Name
+        while(!NpcName.equals(TOP_LEVEL_DELIM)){
+            for(NPC person:people){
+                if(person.getName().equals(NpcName)){
+                    person.restoreState(s);
+                }
+            }
+            NpcName=s.nextLine();//Next NPC name OR ===
+        }
+        
     }
 
     public static Room getEntry() { return entry; }

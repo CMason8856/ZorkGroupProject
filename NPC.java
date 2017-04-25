@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +17,10 @@ static class NoNpcException extends Exception {}
     private Room location;
     private int health;
     private ArrayList<Item> inventory;
+    
+    public static String TOP_LEVEL_DELIM = "===";
+    public static String SECOND_LEVEL_DELIM = "---";
+    public static String NPC_MARKER = "NPC:";
 
     /**
      *
@@ -117,5 +122,28 @@ static class NoNpcException extends Exception {}
     }
     public Room getLocation(){
         return location;
+    }
+    public NPC getNpcByName(String match){
+        NPC bro=null;
+        for(NPC dude:GameState.instance().getDungeon().getPeople()){
+            if(dude.getName().equals(match)){bro=dude;}
+        }
+        return bro;
+    }
+    public void storeState(PrintWriter w){
+        w.println(NPC_MARKER);
+        w.println(name);
+        w.println(location.getTitle());
+        w.println(health);
+        w.println(enemy);
+        w.println(SECOND_LEVEL_DELIM);
+    }
+    public void restoreState(Scanner s){
+        String line=s.nextLine();//Location
+        line=s.nextLine();//Health
+        health=Integer.parseInt(line);
+        line=s.nextLine();//enemy boolean
+        line=s.nextLine();//'---'
+        
     }
 }

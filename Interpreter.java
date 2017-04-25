@@ -72,7 +72,7 @@ public class Interpreter {
 	 */
     private static String promptUser(Scanner commandLine) {
 
-        System.out.print(">>> ");
+        System.out.print("(Player)>>> ");
         return commandLine.nextLine();
     }
 

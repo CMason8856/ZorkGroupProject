@@ -33,6 +33,7 @@ public class GameState {
     static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
     static String INVENTORY_LEADER = "Inventory: ";
+    static String HEALTH_LEADER = "Health: ";
 
 
     public static GameState theInstance;
@@ -41,7 +42,7 @@ public class GameState {
     private static Room adventurersCurrentRoom;
     
     private static int score = 0;
-    private static int health = 50;
+    private static int health = 100;
 
 	/**
 	 * Synchronized method that prevents more than one instance of GameState from being created
@@ -104,6 +105,9 @@ public class GameState {
                             itemName + "'");
                 }
             }
+            String HP=s.nextLine();//Health: ###
+            String[] splitted=HP.split(" ");
+            Player.instance().setHealth(Integer.parseInt(splitted[1]));
         }
     }
 
@@ -132,6 +136,8 @@ public class GameState {
             }
             w.println(inventory.get(inventory.size()-1).getPrimaryName());
         }
+        
+        w.println("Health: "+Player.instance().getHealth());
         w.close();
     }
 

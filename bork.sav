@@ -1,0 +1,37 @@
+Bork v3.0 save data
+Dungeon file: trinkle3.bork
+Room states:
+Stephen's office:
+beenHere=false
+Contents: StarWarsToy,WawaTravelMug,donut
+---
+Room B6:
+beenHere=false
+---
+Basement hallway:
+beenHere=true
+Contents: DrPepper
+---
+Room B13:
+beenHere=false
+Contents: Bomb
+---
+Rotunda balcony:
+beenHere=false
+Contents: chainsaw,magicWand
+---
+Rotunda:
+beenHere=true
+---
+===
+NPC:
+Troll
+Stephen's office
+3
+true
+---
+===
+Adventurer:
+Current room: Basement hallway
+Inventory: Flashlight,Key
+Health: 47

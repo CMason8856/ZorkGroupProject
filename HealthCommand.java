@@ -6,7 +6,7 @@
  */
 
 class HealthCommand extends Command{
-    private int health = GameState.instance().getHealth();
+    private int health = Player.instance().getHealth();
 
 	/**
 	 * Empty construct for HealthCommand
@@ -17,6 +17,7 @@ class HealthCommand extends Command{
 	 * @return returns the String statement determined by where the player's health falls within a certain range
 	 */
     public String execute(){
+        System.out.println("Health: "+health);
         if(health >= 90 && health <= 100){
             return "Your health is in magnificant shape.\n";
         }
